@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import clienteAxios from './config/axios';
 
 //Componentes
 import Pacientes from './components/Pacientes';
@@ -7,6 +8,9 @@ import NuevaCita from './components/NuevaCita';
 import Cita from './components/Cita';
 
 function App() {
+
+  console.log(process.env.REACT_APP_BACKEND_URL);
+
   return (
     <Router>
       <Switch>
