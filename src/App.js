@@ -9,7 +9,23 @@ import Cita from './components/Cita';
 
 function App() {
 
-  console.log(process.env.REACT_APP_BACKEND_URL);
+  //State de la aplicación
+  const [citas, guardarCitas] = useState([]);
+
+  useEffect( () => {
+    console.log('desde useEffect');
+    const consultarAPI = () => {
+      clienteAxios.get('/pacientes')
+        .then(res => {
+          //Colocar enel state el resultado
+          guardarCitas(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
+    consultarAPI();
+  }, [] );
 
   return (
     <Router>
@@ -17,7 +33,7 @@ function App() {
         <Route
           exact 
           path="/" 
-          component={Pacientes}
+          component={() => <Pacientes citas={citas}/>}
         />
 
         <Route
