@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 const Pacientes = ({citas}) => {
 
@@ -13,13 +14,13 @@ const Pacientes = ({citas}) => {
             <div className="container mt-5 py-5">
                 <div className="row">
                     <div className="col-12 mb-5 d-flex justify-content-center">
-                        <a href="#" className="btn btn-success text-uppercase py-2 px-5 font-weight-bold">Crear Cita</a>
+                        <Link to={'/nueva'} className="btn btn-success text-uppercase py-2 px-5 font-weight-bold">Crear Cita</Link>
                     </div>
 
                     <div className="col-md-8 mx-auto">
                         <div className="list-group">
                             {citas.map(cita => (
-                                <a key={cita._id} className="p-5 list-group-item list-group-item-action flex-column align-items-start">
+                                <Link key={cita._id} className="p-5 list-group-item list-group-item-action flex-column align-items-start">
                                     <div className="d-flex w-100 justify-content-between">
                                         <h3 className="mb-3">{cita.nombre}</h3>
                                         <small className="fecha-alta">
@@ -33,7 +34,7 @@ const Pacientes = ({citas}) => {
                                         <p>Dueño: {cita.propietario}</p>
                                         <p>Telefono: {cita.contacto}</p>
                                     </div>
-                                </a>
+                                </Link>
                             ))}
                         </div>
                     </div>
